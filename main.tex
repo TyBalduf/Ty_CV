@@ -17,6 +17,8 @@
 \usepackage[pdftex]{hyperref}
 \usepackage{fancyhdr}
 \usepackage{etaremune} %reverse enumeration
+\usepackage{xparse}
+\usepackage{ifthen}
 
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
@@ -57,13 +59,18 @@
   }
 }
 
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{#3} & \textit{#4} \\
-    \end{tabular*}\vspace{-5pt}
+\DeclareDocumentCommand \resumeSubheading {m m m m O{}} {
+  \vspace{-1.5pt}
+    \ifthenelse{\equal{#5}{}}
+    {\item \textbf{#1} \hfill #2\null\\
+    \textit{#3} \hfill \textit{#4} \\}
+%    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+%      \textbf{#1} & #2 \\
+%      \textit{#3} & \textit{#4} \\
+%    \end{tabular*}\vspace{-5pt}}
+    {\item \textbf{#1} \hfill #2\null\\
+    \textit{#3} \hfill \textit{#4} \\
+      #5}\vspace{-4pt}
 }
 
 
@@ -89,15 +96,15 @@
 \end{tabular*}
 
 %-----------EDUCATION-----------------
-\section{~~Education}
+\section{Education}
   \resumeSubHeadingListStart
      \resumeSubheading
       {University of Kansas}{Lawrence, Kansas}
-      {PhD - Computational Chemistry}{2016 - 2021}
+      {PhD - Computational Chemistry}{2016 - 2021}[Advisor: Dr. Marco Caricato]
       
     \resumeSubheading
       {Saint Ambrose University}{Davenport, Iowa}
-      {Bachelor of Science - Chemistry/Math (Computer Science Minor)}{2012 - 2016}
+      {Chemistry/Math Double Major with a Minor in Computer Science}{2012 - 2016}[Advisor: Dr. Kelly Giddens]
     \resumeSubHeadingListEnd
 	    
 %-----------Awards-----------------
@@ -118,11 +125,11 @@
 \section{Publications}
   \begin{etaremune}
   
-  \item Balduf T.; Caricato M. \textit{Quantum Mechanical Calculation of the Full Optical Rotation Tensor for Periodic Systems} \textbf{In Progress}
+  \item Balduf T.; Caricato M. \textit{Quantum Mechanical Calculation of the Full Optical Rotation Tensor for Periodic Systems} \textbf{In Preparation}
   
-  \item Parsons T.; Balduf T.; Caricato M. \textit{Effect of Level of Theory and Gauge on Computed Optical Rotation} \textbf{In Progress}
+  \item Parsons T.; Balduf T.; Caricato M. \textit{Effect of Gauge, Level of Theory, and Basis Set on Optical Rotation Calculations} \textbf{In Preparation}
   
-  \item Balduf T.; Jystad A.; Lynam D.; Hopkins-Lesberg J.;  Henke W.; Blakemore J.; Caricato M. \\ \textit{Computational Insights into Ligand Influences on Hydrogen Generation with [Cp*Rh] Hydrides} \textbf{In Progress}
+  \item Balduf T.; Jystad A.; Lynam D.; Hopkins-Lesberg J.;  Henke W.; Blakemore J.; Caricato M. \textit{Computational Insights into Ligand Influences on Hydrogen Generation with [Cp*Rh] Hydrides} \textbf{In Preparation}
   
   \item Caricato, M.; Balduf T. \textit{Origin Invariant Full Optical Rotation Tensor in the Length Dipole Gauge without London Atomic Orbitals} The Journal of Chemical Physics \textbf{2021}, \textit{155}, 024118 DOI: \href{https://doi.org/10.1063/5.0053450}{10.1063/5.0053450} 
   
@@ -136,31 +143,38 @@
 	    
 %-----------PROJECTS-----------------
 \vspace{-5pt}
-\section{Presentations}
+\section{Talks}
 \begin{etaremune}
 
-\item ACS Midwest Regional Meeting, SpringField, MO (Oct. 2021): \textit{Quantum Mechanical Calculation of the Full Optical Rotation Tensor for Periodic Systems} \textbf{Talk}
+\item ACS Midwest Regional Meeting, SpringField, MO (Oct. 2021): \textit{Quantum Mechanical Calculation of the Full Optical Rotation Tensor for Periodic Systems} 
 
-\item ACS Midwest Regional Meeting, SpringField, MO (Oct. 2021): \textit{Gauge dependence of the $\tilde{S}$ molecular orbital space decomposition of optical rotation} \textbf{Poster}
 
-\item ACS Midwest Regional Meeting, Wichita, KS (Oct. 2019): \textit{Helical Chains of Diatomic Molecules as a Model for Solid State Optical Rotation} \textbf{Talk}
+\item ACS Midwest Regional Meeting, Wichita, KS (Oct. 2019): \textit{Helical Chains of Diatomic Molecules as a Model for Solid State Optical Rotation} 
 
-\item International Conference on Chiroptical Spectroscopy, Pisa, Italy (Jun. 2019): \textit{Helical Chains of Diatomic Molecules as a Model for Solid State Optical Rotation} \textbf{Poster} 
 
-\item NSF/DOE Quantum Science Summer School, State College, PA (Jun. 2019): \textit{Helical Chains of Diatomic Molecules as a Model for Solid State Optical Rotation} \textbf{Poster} 
+\item St. Ambrose University Chemistry Symposium, Davenport, IA (May 2019): \textit{Helical Chains of Diatomic Molecules as a Model for Solid State Optical Rotation}  
 
-\item St. Ambrose University Chemistry Symposium, Davenport, IA (May 2019): \textit{Helical Chains of Diatomic Molecules as a Model for Solid State Optical Rotation} \textbf{Talk} 
+\item ACS National Meeting, New Orleans, LA (Mar. 2018): \textit{Optical Rotation of Helical Chains of Diatomics as a Model for Periodic Systems} 
 
-\item Kansas Physical Chemistry Symposium, Manhattan, KS (Sep. 2018): \textit{Optical Rotation of Solids: Tensor Component Analysis of Model Helical Chains of Diatomics} \textbf{Poster} 
+\item ACS Midwest Regional Meeting, University of Kansas, Lawrence, KS (Oct. 2017): \textit{Electronic Coupling in Diazulenic Molecular Rectifiers: A Theoretical Approach} 
 
-\item ACS National Meeting, New Orleans, LA (Mar. 2018): \textit{Optical Rotation of Helical Chains of Diatomics as a Model for Periodic Systems} \textbf{Talk} 
-
-\item ACS Midwest Regional Meeting, University of Kansas, Lawrence, KS (Oct. 2017): \textit{Electronic Coupling in Diazulenic Molecular Rectifiers: A Theoretical Approach} \textbf{Talk} 
-
-\item Undergraduate Summer Research Institute, Davenport, IA (Aug. 2014): \textit{Polystyrene Degradation: Optimal Photosensitization in the Presence of Benzophenone} \textbf{Talk}
+\item Undergraduate Summer Research Institute, Davenport, IA (Aug. 2014): \textit{Polystyrene Degradation: Optimal Photosensitization in the Presence of Benzophenone} 
 \end{etaremune}	    
 	    
+\vspace{-5pt}
+\section{Posters}
+\begin{etaremune}
 
+
+\item ACS Midwest Regional Meeting, SpringField, MO (Oct. 2021): \textit{Gauge dependence of the $\tilde{S}$ molecular orbital space decomposition of optical rotation} 
+
+\item International Conference on Chiroptical Spectroscopy, Pisa, Italy (Jun. 2019): \textit{Helical Chains of Diatomic Molecules as a Model for Solid State Optical Rotation}  
+
+\item NSF/DOE Quantum Science Summer School, State College, PA (Jun. 2019): \textit{Helical Chains of Diatomic Molecules as a Model for Solid State Optical Rotation}  
+
+\item Kansas Physical Chemistry Symposium, Manhattan, KS (Sep. 2018): \textit{Optical Rotation of Solids: Tensor Component Analysis of Model Helical Chains of Diatomics}
+
+\end{etaremune}	    
     
 \vspace{-5pt}
 \section{Experience}
@@ -169,29 +183,22 @@
     {Caricato Research Group}{May 2017 - Present}
     \resumeItemListStart
         \resumeItem{Methods Development}
-          {Developed new electronic structure methods to facilitate the interpretation and calculation of optical rotation. Implemented these methods into the Gaussian electronic structure program.}
+          {Developed new electronic structure methods to facilitate the interpretation and calculation of optical rotation. Implemented these methods both in the Gaussian electronic structure program as well as standalone Python scripts.}
           \resumeItem{Mentoring}
-          {Worked directly with graduate (3), undergraduate (3), and high school (1) students to further their research projects. Aided with onboarding for technology/techniques used in the group. Guided the students through experiments and how best to present their findings.}
+          {Mentored graduate (3), undergraduate (3), and high school (1) students on research methodology and presentation.}
+          \resumeItem{Technology}
+          {Aided with onboarding for programs/techniques used in the group. Started and managed the group's Github repository.}
       \resumeItemListEnd
     \resumeSubheading
 		{Teaching Assistant}{Lawrence, KS}
-		{Biophysical Chemistry Lab}{Jan. 2017 - May 2017}
+		{Lab Instructor}{Aug. 2016 - May 2017}
 		\resumeItemListStart
-        \resumeItem{Research Process}
-          {Challenged students to think critically about the research process and the implications of experimental/theoretical results.}
-        \resumeItem{Interdisciplinary}
-          {Demonstrated the interplay between theory and experiment in scientific research.}
+        \resumeItem{CHEM 170}
+          {General Chemistry, introduced common instrumentation and basic lab technique.}
+        \resumeItem{CHEM 511}
+          {Biophysical chemistry, demonstrated the interplay between theory and experiment in scientific research.}
 		\resumeItemListEnd
 
-    \resumeSubheading
-		{Teaching Assistant}{Lawrence, KS}
-		{General Chemistry Lab}{Aug. 2016 - Dec. 2016}
-		\resumeItemListStart
-        \resumeItem{Problem Solving}
-          {Presented the scientific method and chemical reasoning as tools to interpret experiments.}
-        \resumeItem{Technical Skills}
-          {Introduced common instrumentation and basic lab technique.}
-		\resumeItemListEnd
 \resumeSubHeadingListEnd
 
 
@@ -214,7 +221,6 @@
 	\resumeSubItem{Languages}{~~~~~~~~Python, Fortran, Java, Julia}
 	\resumeSubItem{Chem Software}{~Gaussian, Avogadro, Psi4, ASE}
 	\resumeSubItem{Tools}{~~~~~~~~~~~~~~~~Git, LaTeX, Bash/Zsh/Tcsh}
-	\resumeSubItem{Courses}{~~~~~~~~~~~~Programming Language Concepts, Data Structures, Algorithm Analysis}
     \resumeSubHeadingListEnd
 
 \end{document}
